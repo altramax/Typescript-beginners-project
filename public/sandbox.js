@@ -1,4 +1,39 @@
-"use strict";
+const me = {
+    name: "James",
+    age: 23,
+    speak(text) {
+        console.log(text);
+    },
+    spend(amount) {
+        console.log(`I spent`, amount);
+        return amount;
+    }
+};
+console.log(me);
+const greetPerson = (a) => {
+    console.log('Hello', a.name);
+};
+greetPerson(me);
+// module
+import { Invoice } from "./classes/classes.js";
+const inVo1 = new Invoice("mario", "repair of bicycles", 200);
+const inVo2 = new Invoice("mariolavi", "repair of cars", 3000);
+const invoices = [];
+invoices.push(inVo2);
+invoices.push(inVo1);
+console.log(invoices);
+invoices.forEach(inv => {
+    console.log(inv.client, inv.amount, inv.format());
+});
+const button = document.getElementById("button");
+const type = document.getElementById("type");
+const toFrom = document.getElementById("tofrom");
+const details = document.getElementById("details");
+const amount = document.getElementById("amount");
+button.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(type.value, toFrom.value, details.value, amount.value);
+});
 // //  aliasis
 // type strornum = string | number;
 // let g: number[] = [];
@@ -26,35 +61,3 @@
 // let t = test(3, 2);
 // console.log(t);
 // let wq = "ght";
-class invoice {
-    //  public client : string;
-    //  private details: string;
-    //  readonly amount: number;
-    constructor(client, details, amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    format() {
-        return `${this.client} owes ${this.amount} for ${this.details}`;
-    }
-}
-const inVo1 = new invoice("mario", "repair of bicycles", 200);
-const inVo2 = new invoice("mariolavi", "repair of cars", 3000);
-const invoices = [];
-invoices.push(inVo2);
-invoices.push(inVo1);
-console.log(invoices);
-invoices.forEach(inv => {
-    console.log(inv.client, inv.amount, inv.format());
-});
-// default modifiers public, private, readonly
-const button = document.getElementById("button");
-const type = document.getElementById("type");
-const toFrom = document.getElementById("tofrom");
-const details = document.getElementById("details");
-const amount = document.getElementById("amount");
-button.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log(type.value, toFrom.value, details.value, amount.value);
-});

@@ -1,3 +1,67 @@
+// interface 
+interface IsPerson {
+  name : string,
+  age : number,
+  speak(a: string) : void,
+  spend(a: number) : number;
+}
+
+const me: IsPerson = {
+  name : "James",
+  age: 23,
+  speak(text: string): void{
+    console.log(text);
+  },
+  spend(amount: number): number{
+      console.log(`I spent`, amount);
+      return amount
+  }
+}
+
+console.log(me);
+
+
+const greetPerson = (a: IsPerson) =>{
+  console.log('Hello', a.name);
+}
+
+greetPerson(me)
+
+
+
+// module
+import { Invoice} from "./classes/classes.js"
+
+const inVo1 = new Invoice("mario", "repair of bicycles", 200)
+const inVo2 = new Invoice("mariolavi", "repair of cars", 3000)
+
+const invoices : Invoice[] = [];
+invoices.push(inVo2);
+invoices.push(inVo1);
+
+console.log(invoices);
+
+invoices.forEach(inv=>{
+  console.log(inv.client, inv.amount, inv.format());
+})
+
+
+
+const button = document.getElementById("button") as HTMLElement;
+const type = document.getElementById("type") as HTMLSelectElement;
+const toFrom = document.getElementById("tofrom") as HTMLInputElement;
+const details = document.getElementById("details") as HTMLInputElement;
+const amount = document.getElementById("amount") as HTMLInputElement;
+
+
+button.addEventListener("click", (e: Event)=>{
+  e.preventDefault();
+  console.log(type.value, toFrom.value, details.value, amount.value);
+})
+
+
+
+
 // //  aliasis
 // type strornum = string | number;
 
@@ -35,54 +99,3 @@
 
 // let wq = "ght";
 
-
-
-class invoice{
-  //  public client : string;
-  //  private details: string;
-  //  readonly amount: number;
-
-   constructor(
-    public client : string,
-    private details: string,
-    readonly amount: number
-   ){
-  
-   }
-
-   format(){
-    return `${this.client} owes ${this.amount} for ${this.details}`
-   }
-}
-
-const inVo1 = new invoice("mario", "repair of bicycles", 200)
-const inVo2 = new invoice("mariolavi", "repair of cars", 3000)
-
-const invoices : invoice[] = [];
-invoices.push(inVo2);
-invoices.push(inVo1);
-
-console.log(invoices);
-
-invoices.forEach(inv=>{
-  console.log(inv.client, inv.amount, inv.format());
-})
-
-// default modifiers public, private, readonly
-
-
-
-
-
-
-const button = document.getElementById("button") as HTMLElement;
-const type = document.getElementById("type") as HTMLSelectElement;
-const toFrom = document.getElementById("tofrom") as HTMLInputElement;
-const details = document.getElementById("details") as HTMLInputElement;
-const amount = document.getElementById("amount") as HTMLInputElement;
-
-
-button.addEventListener("click", (e: Event)=>{
-  e.preventDefault();
-  console.log(type.value, toFrom.value, details.value, amount.value);
-})
