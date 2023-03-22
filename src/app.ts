@@ -20,7 +20,7 @@ button.addEventListener("click", (e: Event)=>{
  }else if(type.value === "payment"){
   doc = new Payment("Yoshi", "food", 250);
  }
- console.log(doc);
+//  console.log(doc);
 })
 
 
